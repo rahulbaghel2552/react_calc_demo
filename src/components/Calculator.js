@@ -5,8 +5,24 @@ import Screen from "./Screen";
 const Calculator = () => {
   const [input, setInput] = useState("");
 
-  function addInput(keyVal) {
-    setInput(input.concat(keyVal));
+  function addInput(key) {
+    var newKey = "";
+    if (input.length === 0) {
+      if (isNaN(Number(key))) {
+        newKey = [...input];
+        newKey += 0 + key;
+        setInput(newKey);
+        return;
+      } else {
+        newKey = [...input];
+        newKey += key;
+        setInput(newKey);
+        return;
+      }
+    }
+    newKey = input;
+    newKey += key;
+    setInput(newKey);
   }
 
   function performOperation() {
